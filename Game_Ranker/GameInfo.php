@@ -51,23 +51,20 @@
 <div class="mb-3">
   <label for="commentSection" class="form-label">Comment</label>
   <textarea class="form-control" id="commentsection" name="comment" rows="3"></textarea>
-</div>
+    </div>
 <button type="submit" class="btn btn-primary">Comment</button>
 </form>
 
 <?php
 include("functions.php");
-    $GameID = $_POST["GameID"];
 $comment = $_POST["comment"];
   $conn = connect();
   $result = $conn->prepare("INSERT INTO comments (GameID,username,Comment) VALUES (?,?,?)");
-  $result->execute([$GameID,"Test",$comment]);
+  $result->execute([1,"Test",$comment]);
     
-if($name == null){
-  
-}else{
-  addComment($ID,$comment,"Test");
-}
+
+addComment($ID,$comment,"Test");
+
 ?>
 <?php
 
