@@ -47,7 +47,7 @@
   </div>
 </nav>
 
-<form method="post" action="index.php">
+<form method="post" action="GameInfo.php">
 <div class="mb-3">
   <label for="commentSection" class="form-label">Comment</label>
   <textarea class="form-control" id="commentsection" name="comment" rows="3"></textarea>
@@ -57,8 +57,12 @@
 
 <?php
 include("functions.php");
+    $GameID = $_POST["GameID"];
 $comment = $_POST["comment"];
-$name = $_SESSION["gatekeeper"];
+  $conn = connect();
+  $result = $conn->prepare("INSERT INTO comments (GameID,username,Comment) VALUES (?,?,?)");
+  $result->execute([$GameID,"Test",$comment]);
+    
 if($name == null){
   
 }else{
