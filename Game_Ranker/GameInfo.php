@@ -63,7 +63,7 @@ echo '
 </form>';
 ?>
 <?php
-$name = $_SESSION["gatekeeper"];
+$name = "Test";
 
 $comment = $_POST["comment"];
 addComment($ID,$comment,$name);
