@@ -62,7 +62,7 @@ $name = $_SESSION["gatekeeper"];
 if($name == null){
   
 }else{
-  addComment($ID,$comment,$name);
+  addComment($ID,$comment,"Test");
 }
 ?>
 <?php
