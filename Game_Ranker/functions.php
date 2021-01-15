@@ -38,7 +38,7 @@ while($row = $result->fetch())
           <p>Platform : ".$row["Platform"]." | Publisher : ".$row["Publisher"]. "</p> 
           <p>Genre : ".$row["Genre"] ." | Year of Release : ".$row["Year"]." </p>
           <p>Global Sales: $".$row["Global_Sales"]."M</p>
-          <a href='/Gameinfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
+          <a href='Gameinfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
         </div>
       </div>
     </div>";
