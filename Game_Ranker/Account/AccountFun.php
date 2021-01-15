@@ -10,7 +10,6 @@ if ($result==true)
 {
      // Correct password : set up the authentication session variable
     // and store the username in it
-    $_SESSION["gatekeeper"] = $username;
 
     // Redirect to the main menu
     header ("Location: ../index.php");
