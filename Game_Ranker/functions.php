@@ -2,7 +2,20 @@
 
 function connect()
 {
-   $connection = new PDO("mysql:host=localhost:8111;dbname=video_games_sales", "root", "root");
+  //Deveplment connection details
+  #$host = "localhost:8111";
+  #$db = "video_games_sales";
+  #$user = "root";
+  #$pass =  "root";
+
+  //Remote Connection details
+  $host = "r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
+  $db = "ya094smc4w0cjhp3";
+  $user = "v2n75g1vzmjbfguj";
+  $pass =  "mqhbapf22e7qy6fk";
+
+
+   $connection = new PDO("mysql:host=$host;dbname=$db", "$user", "$pass");
     return $connection;
 }
 
