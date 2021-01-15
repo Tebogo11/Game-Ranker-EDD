@@ -48,11 +48,6 @@
 
 <?php
 include("functions.php");
-$ID = $_GET["GameID"];
-connect();
-searchByID($ID);
-?>
-<?php
 if(isset($_SESSION["gatekeeper"])){
 echo '
 <form method="post" action="GameInfo.php?GameID='.$ID.'">
