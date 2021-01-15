@@ -38,7 +38,7 @@ while($row = $result->fetch())
           <p>Platform : ".$row["Platform"]." | Publisher : ".$row["Publisher"]. "</p> 
           <p>Genre : ".$row["Genre"] ." | Year of Release : ".$row["Year"]." </p>
           <p>Global Sales: $".$row["Global_Sales"]."M</p>
-          <a href='Gameinfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
+          <a href='GameInfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
         </div>
       </div>
     </div>";
@@ -64,7 +64,7 @@ while($row = $result->fetch())
           <p>Platform : ".$row["Platform"]." | Publisher : ".$row["Publisher"]. "</p> 
           <p>Genre : ".$row["Genre"] ." | Year of Release : ".$row["Year"]." </p>
           <p>Global Sales: $".$row["Global_Sales"]."M</p>
-          <a href='Gameinfo.php?GameID=".$row["Rank"]."'  class='btn btn-primary'>Comments</a>
+          <a href='GameInfo.php?GameID=".$row["Rank"]."'  class='btn btn-primary'>Comments</a>
         </div>
       </div>
     </div>";
@@ -90,7 +90,7 @@ function search($search){
           <h5 class='card-title'>".$row["Name"]."</h5>
           <p class='card-text'>".$row["Platform"]."</p>
           <p class='card-text'>".$row["Publisher"]."</p>
-          <a href='Gameinfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
+          <a href='GameInfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
         </div>
         <div class='card-footer text-muted'>
           ".$row["Year"]."
@@ -157,17 +157,14 @@ function searchComments($gameID){
 }
 
 function addComment($GameID,$comment,$name){
-  try{
+  
   $conn = connect();
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   $result = $conn->prepare("INSERT INTO comments (GameID,username,Comment) VALUES (?,?,?)");
   $result->execute([$GameID,$name,$comment]);
 
-  } catch(Exception $e){
-    echo 'Exception -> ';
-    var_dump($e->getMessage());
-  }
+
 }
 
 ?>
