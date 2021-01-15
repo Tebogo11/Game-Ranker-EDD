@@ -47,28 +47,16 @@
   </div>
 </nav>
 
-<?php
-include("functions.php");
-$ID = $_GET["GameID"];
-searchByID($ID);
-?>
-<?php
-if(isset($_SESSION["gatekeeper"])){
-echo '
-<form method="post" action="GameInfo.php?GameID='.$ID.'">
+<form method="post" action="index.php">
 <div class="mb-3">
   <label for="commentSection" class="form-label">Comment</label>
   <textarea class="form-control" id="commentsection" name="comment" rows="3"></textarea>
 </div>
 <button type="submit" class="btn btn-primary">Comment</button>
-</form>';}else
-{
-  echo '<div class="alert alert-warning" role="alert">
-  You have to be <a href="Account/Login.php" class="alert-link">logged in</a> to leave a comment
-</div>';
-}
-?>
+</form>
+
 <?php
+include("functions.php");
 $comment = $_POST["comment"];
 $name = $_SESSION["gatekeeper"];
 if($name == null){
