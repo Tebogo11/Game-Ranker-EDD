@@ -23,6 +23,7 @@
           <a class="nav-link" href="Ranking.php">Ranking</a>
         </li>
         <?php
+          error_reporting(0);
         session_start();
         if(!isset($_SESSION["gatekeeper"])){
           echo '<li class="nav-item">
