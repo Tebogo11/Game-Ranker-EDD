@@ -38,7 +38,7 @@ while($row = $result->fetch())
           <p>Platform : ".$row["Platform"]." | Publisher : ".$row["Publisher"]. "</p> 
           <p>Genre : ".$row["Genre"] ." | Year of Release : ".$row["Year"]." </p>
           <p>Global Sales: $".$row["Global_Sales"]."M</p>
-          <a href='GameInfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
+          <a href='Gameinfo.php?GameID=".$row["Rank"]."' class='btn btn-primary'>Comments</a>
         </div>
       </div>
     </div>";
@@ -64,7 +64,7 @@ while($row = $result->fetch())
           <p>Platform : ".$row["Platform"]." | Publisher : ".$row["Publisher"]. "</p> 
           <p>Genre : ".$row["Genre"] ." | Year of Release : ".$row["Year"]." </p>
           <p>Global Sales: $".$row["Global_Sales"]."M</p>
-          <a href='GameInfo.php?GameID=".$row["Rank"]."'  class='btn btn-primary'>Comments</a>
+          <a href='Gameinfo.php?GameID=".$row["Rank"]."'  class='btn btn-primary'>Comments</a>
         </div>
       </div>
     </div>";
@@ -126,33 +126,15 @@ function searchByID($ID){
     }
  }
 
- function searchByIDforComment($ID){
-    $conn = connect();
-    $result =$conn->prepare("SELECT * FROM gamesales WHERE Rank = ? ");
-    $result->execute([$ID]);
-    $row = $result->fetch();
-    return $row["Name"];
- }
-
- function userName($ID){
-    $conn = connect();
-    $result =$conn->prepare("SELECT * FROM user WHERE userID = ? LIMIT 1");
-    $result->execute([$ID]);
-    $row = $result->fetch();
-    $output = 0;
-    while($row = $result->fetch())
-    {
-      echo $row["username"];
-    }
   
-}
+
 function searchComments($gameID){
     $conn = connect();
     $result =$conn->prepare("SELECT * FROM comments WHERE GameID = ? ");
     $result->execute([$gameID]);
      while($row = $result->fetch())
     {
-        $Gname = searchByIDforComment($gameID);
+     
         echo "<div class='card'>
         <div class='card-header'>
         ".$row["username"]."
@@ -188,10 +170,5 @@ function addComment($GameID,$comment,$name){
   }
 }
 
-function delete($commentID){
-  $conn = connect();
-  $result =$conn->prepare("DELETE FROM comments WHERE commentID = ? ");
-  $result->execute([$commentID]);
-}
 ?>
 
