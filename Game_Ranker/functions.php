@@ -9,10 +9,10 @@ function connect()
   #$pass =  "root";
 
   //Remote Connection details
-  $host = "r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
-  $db = "ya094smc4w0cjhp3";
-  $user = "v2n75g1vzmjbfguj";
-  $pass =  "mqhbapf22e7qy6fk";
+  $host = "sql7.freemysqlhosting.net";
+  $db = "sql7387156";
+  $user = "sql7387156";
+  $pass =  "hntqaxadQx";
 
 
    $connection = new PDO("mysql:host=$host;dbname=$db", "$user", "$pass");
