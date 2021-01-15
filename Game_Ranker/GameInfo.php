@@ -23,7 +23,6 @@
           <a class="nav-link" href="Ranking.php">Ranking</a>
         </li>
         <?php
-          error_reporting(0);
         session_start();
         if(!isset($_SESSION["gatekeeper"])){
           echo '<li class="nav-item">
@@ -47,23 +46,33 @@
   </div>
 </nav>
 
-<form method="post" action="GameInfo.php">
+<?php
+include("functions.php");
+$ID = $_GET["GameID"];
+connect();
+searchByID($ID);
+?>
+<?php
+if(isset($_SESSION["gatekeeper"])){
+echo '
+<form method="post" action="GameInfo.php?GameID='.$ID.'">
 <div class="mb-3">
   <label for="commentSection" class="form-label">Comment</label>
   <textarea class="form-control" id="commentsection" name="comment" rows="3"></textarea>
-    </div>
+</div>
 <button type="submit" class="btn btn-primary">Comment</button>
-</form>
-
+</form>';}else
+{
+  echo '<div class="alert alert-warning" role="alert">
+  You have to be <a href="Account/Login.php" class="alert-link">logged in</a> to leave a comment
+</div>';
+}
+?>
 <?php
-include("functions.php");
-$comment = $_POST["comment"];
-  $conn = connect();
-  $result = $conn->prepare("INSERT INTO comments (GameID,username,Comment) VALUES (?,?,?)");
-  $result->execute([1,"Test",$comment]);
-    
+$name = $_SESSION["gatekeeper"];
 
-addComment($ID,$comment,"Test");
+$comment = $_POST["comment"];
+addComment($ID,$comment,$name);
 
 ?>
 <?php
