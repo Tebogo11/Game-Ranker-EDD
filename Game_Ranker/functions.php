@@ -5,7 +5,7 @@ function connect()
   //Deveplment connection details
   #$host = "localhost:8111";
   #$db = "video_games_sales";
-  #$user = "root";
+  #$user = "root";y
   #$pass =  "root";
 
   //Remote Connection details
@@ -13,10 +13,15 @@ function connect()
   $db = "gamerankdata";
   $user = "gamerankeruser";
   $pass =  "game_ranker101";
+  $options = array(
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    PDO::MYSQL_ATTR_SSL_CA => '/DigiCertGlobalRootCA.crt.pem',
+    PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+  );
 
 
-   $connection = new PDO("mysql:host=$host;dbname=$db", "$user", "$pass");
-    return $connection;
+  $conn = new PDO("mysql:host=$host;port=3306;dbname=$db", $user, $pass, $options);
+  return $conn;
 }
 
 function Top3()
