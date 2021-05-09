@@ -9,10 +9,10 @@ function connect()
   #$pass =  "root";
 
   //Remote Connection details
-  $host = "freedb.tech";
-  $db = "freedbtech_ESSgameranker";
-  $user = "freedbtech_essuser";
-  $pass =  "esspass";
+  $host = "gameranker.mysql.database.azure.com";
+  $db = "gamerankdata";
+  $user = "gamerankeruser";
+  $pass =  "game_ranker101";
 
 
    $connection = new PDO("mysql:host=$host;dbname=$db", "$user", "$pass");
